@@ -1,0 +1,261 @@
+:root {
+    --codm-dark-bg: #1a1a1d; /* Negro casi puro, ligeramente desaturado */
+    --codm-dark-grey: #2c2f33; /* Gris oscuro para elementos de UI */
+    --codm-light-grey: #99aab5; /* Gris claro para texto secundario */
+    --codm-orange: #ff8c00;   /* Naranja CoDM característico */
+    --codm-yellow-highlight: #ffd700; /* Amarillo para highlights */
+    --codm-red-warning: #dc3545; /* Rojo para advertencias */
+    --codm-blue-accent: #007bff; /* Azul para acentos sutiles si es necesario */
+    --font-primary: 'Russo One', sans-serif; /* Titulos principales, look militar */
+    --font-secondary: 'Orbitron', sans-serif; /* Subtitulos, look tecnológico */
+    --font-body: 'Roboto', sans-serif; /* Texto general, legible */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--codm-dark-bg);
+    color: var(--codm-light-grey);
+    line-height: 1.7;
+    overflow-x: hidden; /* Evita scroll horizontal innecesario */
+}
+
+/* Efecto de scanlines sutil para ambiente gamer */
+.overlay-scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        rgba(20,20,20,0) 50%,
+        rgba(0,0,0,0.15) 50%
+    );
+    background-size: 100% 4px; /* Grosor de las scanlines */
+    pointer-events: none; /* Para que no interfiera con clics */
+    z-index: 10;
+    opacity: 0.5;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative; /* Para z-index de scanlines */
+    z-index: 1;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: linear-gradient(145deg, var(--codm-dark-grey), #3a3d40);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5), inset 0 0 5px var(--codm-orange);
+    border-left: 5px solid var(--codm-orange);
+}
+
+.main-header h1 {
+    font-family: var(--font-primary);
+    color: var(--codm-orange);
+    font-size: 2.2em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    letter-spacing: 1px;
+}
+
+.event-section {
+    background-color: rgba(44, 47, 51, 0.7); /* var(--codm-dark-grey con transparencia) */
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.event-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4), 0 0 10px var(--codm-orange);
+}
+
+.event-section h2 {
+    font-family: var(--font-secondary);
+    color: var(--codm-yellow-highlight);
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--codm-orange);
+    padding-bottom: 10px;
+    display: inline-block; /* Para que el borde solo ocupe el texto */
+}
+
+.highlight {
+    color: var(--codm-yellow-highlight);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.highlight-strong {
+    color: var(--codm-orange);
+    font-family: var(--font-primary);
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+    border: 1px dashed var(--codm-yellow-highlight);
+}
+
+.divider {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(255,140,0,0), var(--codm-orange), rgba(255,140,0,0));
+    margin: 40px 0;
+}
+
+.columns-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Para que en móviles se pongan uno debajo del otro */
+}
+
+.category-section, .prohibitions-section {
+    flex: 1; /* Ocupan el espacio disponible equitativamente */
+    min-width: 300px; /* Mínimo antes de envolver */
+}
+
+.category-section h2, .prohibitions-section h2 {
+    font-size: 1.6em;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #444;
+    display: flex;
+    align-items: center;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+.emoji-bullet {
+    margin-right: 12px;
+    font-size: 1.2em; /* Hacer los emojis un poco más grandes */
+    min-width: 25px; /* Para alinear texto si los emojis varían de ancho */
+    display: inline-block;
+    text-align: center;
+}
+
+.prohibitions-section ul li {
+    color: #ffc107; /* Amarillo para destacar prohibiciones */
+}
+.prohibitions-section ul li .emoji-bullet {
+    color: var(--codm-red-warning); /* Rojo para el emoji de prohibición */
+}
+
+
+.important-rules {
+    background-color: rgba(var(--codm-red-warning-rgb, 220, 53, 69), 0.1); /* Fondo rojo tenue */
+    border: 2px solid var(--codm-red-warning);
+}
+
+.important-rules h2 {
+    color: var(--codm-red-warning);
+    border-bottom-color: var(--codm-red-warning);
+}
+
+.ban-warning {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-primary);
+    color: var(--codm-red-warning);
+    font-size: 1.4em;
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    border: 2px solid var(--codm-red-warning);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px black;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: var(--codm-light-grey);
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+}
+
+/* Animaciones al hacer scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 1.8em;
+    }
+    .event-section h2 {
+        font-size: 1.5em;
+    }
+    .columns-container {
+        flex-direction: column;
+    }
+    .highlight-strong {
+        font-size: 1.1em;
+    }
+    .ban-warning {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header h1 {
+        font-size: 1.5em;
+    }
+    .event-section h2 {
+        font-size: 1.3em;
+    }
+    .container {
+        padding: 15px;
+    }
+    .event-section {
+        padding: 20px;
+    }
+     ul li {
+        font-size: 0.9em;
+    }
+    .emoji-bullet {
+        margin-right: 8px;
+        font-size: 1.1em;
+    }
+}
+
+/* Para que funcione el rgba con variable CSS en .important-rules */
+:root {
+    --codm-red-warning-rgb: 220, 53, 69;
+}
